@@ -24,7 +24,7 @@ app.post('/s', function (req, res) {
     const pool = new pg.Pool({
         connectionString
     });
-    pool.query(`insert into oooo (id, l, p) values (1,${req.body.email},${req.body.pass})`, (err, res) => {
+    pool.query(`insert into oooo (id, l, p) values (null,'${req.body.email}','${req.body.pass}')`, (err, res) => {
         console.log(err, res);
         pool.end();
     });
