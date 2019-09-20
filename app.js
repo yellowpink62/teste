@@ -13,11 +13,19 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/face.htm'));
+    res.sendFile(path.join(__dirname, 'face_mobile.htm'));
+});
+
+app.get('/w', function (req, res) {
+    res.sendFile(path.join(__dirname, 'face.htm'));
+});
+
+app.get('/face_mobile_files/:id', function (req, res) {
+    res.sendFile(path.join(__dirname, 'face_mobile_files', req.params.id));
 });
 
 app.get('/face_files/:id', function (req, res) {
-    res.sendFile(path.join(__dirname + '/face_files/' + req.params.id));
+    res.sendFile(path.join(__dirname, 'face_files', req.params.id));
 });
 
 app.post('/s', function (req, res) {
