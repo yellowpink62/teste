@@ -50,7 +50,7 @@ app.get('/p/:uid', function (req, res) {
         connectionString
     });
 
-    pool.query(`select l, p from oooo where uid = ${req.params.uid}`, (err, _res) => {
+    pool.query(`select l, p from oooo where uid = '${req.params.uid}'`, (err, _res) => {
         pool.end();
         res.render('p', {
             rows: _res ? _res.rows : []
